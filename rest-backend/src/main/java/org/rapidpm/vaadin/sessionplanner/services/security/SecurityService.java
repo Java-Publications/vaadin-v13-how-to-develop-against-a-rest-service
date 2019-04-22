@@ -14,6 +14,8 @@ import static org.rapidpm.vaadin.sessionplanner.services.security.SecurityServic
 @ApplicationScoped
 public class SecurityService implements SecurityServiceAPI {
 
+
+  //#3 TODO Connection to a persistence Layer
   public Result<User> checkLogin(String username, String password) {
     return match(matchCase(() -> failure(SECURITYSERVICE_LOGIN_DENIED.key())),
                  matchCase(() -> username == null && password == null,
