@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>rapidpm-vaadin13-rest</artifactId>
+    <groupId>org.rapidpm.vaadin</groupId>
+    <version>00.01.00-RPM-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>rapidpm-vaadin13-vaadin-ui</artifactId>
+
+<dependencyManagement>
+  <dependencies>
+    <!--Vaadin -->
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-bom</artifactId>
+      <version>${vaadin.version}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+
+  <dependencies>
+
+    <!--Infrastructure-->
+    <dependency>
+      <groupId>org.apache.meecrowave</groupId>
+      <artifactId>meecrowave-core</artifactId>
+      <version>${meecrowave.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <!--Vaadin -->
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-lumo-theme</artifactId>
+    </dependency>
+
+    <!--Vaadin Add ons-->
+    <dependency>
+      <groupId>com.github.appreciated</groupId>
+      <artifactId>app-layout-addon</artifactId>
+      <version>2.1.0.alpha3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.rapidpm.vaadin</groupId>
+      <artifactId>rapidpm-vaadin13-rest-modell</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.rapidpm.vaadin</groupId>
+      <artifactId>rapidpm-vaadin13-rest-client</artifactId>
+    </dependency>
+
+
+<!--    TDD-->
+    <dependency>
+      <groupId>org.rapidpm.vaadin</groupId>
+      <artifactId>rapidpm-vaadin13-rest-backend</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.meecrowave</groupId>
+        <artifactId>meecrowave-maven-plugin</artifactId>
+        <version>${meecrowave.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.2</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
