@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2017 Sven Ruppert (sven.ruppert@gmail.com)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <parent>
+    <groupId>org.rapidpm</groupId>
+    <artifactId>rapidpm-dependencies</artifactId>
+    <version>04.00.16-RPM</version>
+  </parent>
+
+
+  <groupId>org.rapidpm.vaadin</groupId>
+  <artifactId>rapidpm-vaadin13-rest</artifactId>
+  <version>00.01.00-RPM-SNAPSHOT</version>
+
+
+  <name>RapidPM - Vaadin13 - REST Tutorial</name>
+
+  <packaging>pom</packaging>
+
+  <inceptionYear>2018</inceptionYear>
+  <organization>
+    <name>Sven Ruppert</name>
+    <url>http://www.sven-ruppert.de</url>
+  </organization>
+  <url>https://github.com/Java-Publications/vaadin-v13-how-to-develop-against-a-rest-service</url>
+  <scm>
+    <url>https://github.com/Java-Publications/vaadin-v13-how-to-develop-against-a-rest-service</url>
+    <connection>
+      scm:git:https://github.com/Java-Publications/vaadin-v13-how-to-develop-against-a-rest-service.git
+    </connection>
+    <developerConnection>
+      scm:git:https://github.com/Java-Publications/vaadin-v13-how-to-develop-against-a-rest-service.git
+    </developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+  <developers>
+    <developer>
+      <name>Sven Ruppert</name>
+      <email>sven.ruppert@gmail.com</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+  <issueManagement>
+    <system>Github</system>
+    <url>
+      https://github.com/Java-Publications/vaadin-v13-how-to-develop-against-a-rest-service/issues
+    </url>
+  </issueManagement>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+
+  <repositories>
+    <repository>
+      <id>vaadin-addons</id>
+      <url>http://maven.vaadin.com/vaadin-addons</url>
+    </repository>
+  </repositories>
+
+
+  <properties>
+    <!--technical-->
+    <!--    <maven.compiler.release>8</maven.compiler.release>-->
+    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!--Frameworks-->
+    <vaadin.version>13.0.4</vaadin.version>
+    <meecrowave.version>1.2.7</meecrowave.version>
+    <helidon-webserver.version>1.0.2</helidon-webserver.version>
+    <cache2k-api.version>1.2.0.Final</cache2k-api.version>
+
+    <jersey.version>2.28</jersey.version>
+    <jackson.version>2.9.8</jackson.version>
+  </properties>
+
+
+  <modules>
+    <module>rest-modell</module>
+    <module>rest-backend</module>
+    <module>rest-client</module>
+    <module>vaadin-ui</module>
+  </modules>
+
+  <!-- Just to disable any accidental deployment to maven.central -->
+  <distributionManagement>
+    <repository>
+      <id>localhost</id>
+      <url>file://${basedir}/target/repo/</url>
+    </repository>
+    <snapshotRepository>
+      <id>localhost</id>
+      <url>file://${basedir}/target/snapshot-repo/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <dependencyManagement>
+
+    <dependencies>
+      <dependency>
+        <groupId>javax.ws.rs</groupId>
+        <artifactId>javax.ws.rs-api</artifactId>
+        <version>2.1.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>javax.activation-api</artifactId>
+        <version>1.2.0</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.enterprise</groupId>
+        <artifactId>cdi-api</artifactId>
+        <version>2.0.SP1</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <!--      project modules that are shared-->
+
+      <!--      For the Swing app-->
+      <dependency>
+        <groupId>org.rapidpm.vaadin</groupId>
+        <artifactId>rapidpm-vaadin13-rest-backend</artifactId>
+        <version>00.01.00-RPM-SNAPSHOT</version>
+      </dependency>
+
+      <!--      For the Vaadin UI-->
+      <dependency>
+        <groupId>org.rapidpm.vaadin</groupId>
+        <artifactId>rapidpm-vaadin13-rest-client</artifactId>
+        <version>00.01.00-RPM-SNAPSHOT</version>
+      </dependency>
+
+      <!--      For Backend and Vaadin UI -->
+      <dependency>
+        <groupId>org.rapidpm.vaadin</groupId>
+        <artifactId>rapidpm-vaadin13-rest-modell</artifactId>
+        <version>00.01.00-RPM-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.helidon.webserver</groupId>
+        <artifactId>helidon-webserver</artifactId>
+        <version>${helidon-webserver.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.helidon.config</groupId>
+        <artifactId>helidon-config</artifactId>
+        <version>${helidon-webserver.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.helidon.media.jsonb</groupId>
+        <artifactId>helidon-media-jsonb-server</artifactId>
+        <version>${helidon-webserver.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.helidon.microprofile.bundles</groupId>
+        <artifactId>helidon-microprofile-1.2</artifactId>
+        <version>${helidon-webserver.version}</version>
+      </dependency>
+
+      <!--      REST Client-->
+      <dependency>
+        <groupId>org.glassfish.jersey.core</groupId>
+        <artifactId>jersey-client</artifactId>
+        <version>${jersey.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jersey.media</groupId>
+        <artifactId>jersey-media-json-jackson</artifactId>
+        <version>${jersey.version}</version>
+      </dependency>
+
+
+<!--      JACKSON MApping-->
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- JCche Impl-->
+    <!--
+          Provides the cache2k JCache implementation and depends on
+          everything needed at runtime.
+      -->
+<!--    <dependency>-->
+<!--      <groupId>org.cache2k</groupId>-->
+<!--      <artifactId>cache2k-jcache</artifactId>-->
+<!--      <version>${cache2k-api.version}</version>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
+<!--    &lt;!&ndash;-->
+<!--         Optional. When application code depends on JCache API.-->
+<!--      &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>javax.cache</groupId>-->
+<!--      <artifactId>cache-api</artifactId>-->
+<!--      <version>1.1.0</version>-->
+<!--    </dependency>-->
+
+    <!--Security-->
+
+
+    <!--For TestUI only-->
+
+
+    <!--Logging-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.2</version>
+    </dependency>
+  </dependencies>
+
+</project>
