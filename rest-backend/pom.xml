@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>rapidpm-vaadin13-rest</artifactId>
+    <groupId>org.rapidpm.vaadin</groupId>
+    <version>00.01.00-RPM-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>rapidpm-vaadin13-rest-backend</artifactId>
+
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.helidon</groupId>
+        <artifactId>helidon-bom</artifactId>
+        <version>${helidon-webserver.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.rapidpm.vaadin</groupId>
+      <artifactId>rapidpm-vaadin13-rest-modell</artifactId>
+    </dependency>
+
+<!--    API-->
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>javax.activation-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.enterprise</groupId>
+      <artifactId>cdi-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+<!--    infrastructure-->
+    <dependency>
+      <groupId>io.helidon.webserver</groupId>
+      <artifactId>helidon-webserver</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.config</groupId>
+      <artifactId>helidon-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.media.jsonb</groupId>
+      <artifactId>helidon-media-jsonb-server</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.helidon.microprofile.bundles</groupId>
+      <artifactId>helidon-microprofile-1.2</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>
