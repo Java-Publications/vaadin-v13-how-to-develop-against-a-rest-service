@@ -26,13 +26,14 @@ public class SecurityServiceResource implements HasLogger {
   @GET
   @Path("{user}/{password}")
   @Produces(MediaType.APPLICATION_JSON)
-  public String login(@PathParam("user") final String user,
-                      @PathParam("password") final String password) {
+  public String login(@PathParam("user") final String user, @PathParam("password") final String password) {
     return securityService
         .checkLogin(user, password)
         .flatMap(u -> userConverter.toJSON(u))
         .ifFailed((failed) -> logger().info("bad username/password combination for user " + user))
-        .ifFailed((failed) -> { throw new RuntimeException(failed); })
+        .ifFailed((failed) -> {
+          throw new RuntimeException(failed);
+        })
         .get(); //
   }
 

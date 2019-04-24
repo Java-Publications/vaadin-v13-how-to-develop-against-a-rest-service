@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.rapidpm.vaadin.sessionplanner.services.security.SecurityServicePaths.LOGIN;
 
-public class SecurityServiceClient implements SecurityServiceAPI , HasLogger {
+public class SecurityServiceClient implements SecurityServiceAPI, HasLogger {
 
   private static final UserConverter USER_CONVERTER = new UserConverter();
   private static final Client        CLIENT         = ClientBuilder.newClient();
@@ -30,11 +30,12 @@ public class SecurityServiceClient implements SecurityServiceAPI , HasLogger {
 
     Response.StatusType statusInfo = response.getStatusInfo();
     Response.Status     status     = statusInfo.toEnum();
-    switch (status){
-      case OK: return USER_CONVERTER.fromJSON(response.readEntity(String.class));
+    switch (status) {
+      case OK:
+        return USER_CONVERTER.fromJSON(response.readEntity(String.class));
       default: {
-        String              statusInfoReasonPhrase = statusInfo.getReasonPhrase();
-        int                 statusCode = statusInfo.getStatusCode();
+        String statusInfoReasonPhrase = statusInfo.getReasonPhrase();
+        int    statusCode             = statusInfo.getStatusCode();
         logger().warning(" -- " + statusCode + " -- " + statusInfoReasonPhrase);
         throw new RuntimeException("LOGIN Failed for " + username);
       }
