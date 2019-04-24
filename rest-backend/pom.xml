@@ -62,4 +62,24 @@
 
   </dependencies>
 
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>com.webcohesion.enunciate</groupId>
+			<artifactId>enunciate-maven-plugin</artifactId>
+			<version>2.11.1</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>docs</goal>
+					</goals>
+					<configuration>
+						<!-- the directory where to put the docs -->
+						<docsDir>${project.build.directory}/classes/WEB</docsDir>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+    </plugins>
+  </build>
 </project>
