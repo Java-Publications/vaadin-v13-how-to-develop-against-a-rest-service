@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.rapidpm.vaadin.sessionplanner;
+package org.rapidpm.vaadin;
 
 import org.apache.meecrowave.Meecrowave;
 import org.rapidpm.vaadin.sessionplanner.services.I18NProviderImpl;

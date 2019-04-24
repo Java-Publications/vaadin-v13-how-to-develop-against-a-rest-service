@@ -16,7 +16,8 @@ import static org.rapidpm.vaadin.sessionplanner.views.login.LoginViewOO.NAV_LOGI
 
 public class ApplicationServiceInitListener implements VaadinServiceInitListener, HasLogger {
 
-  @Override public void serviceInit(ServiceInitEvent e) {
+  @Override
+  public void serviceInit(ServiceInitEvent e) {
 
     e
         .getSource()
@@ -29,7 +30,8 @@ public class ApplicationServiceInitListener implements VaadinServiceInitListener
   }
 
   private static class SecurityListener implements BeforeEnterListener, HasLogger {
-    @Override public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
+    @Override
+    public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
       final UI            ui            = UI.getCurrent();
       final VaadinSession vaadinSession = ui.getSession();
 
@@ -41,8 +43,7 @@ public class ApplicationServiceInitListener implements VaadinServiceInitListener
             logger().info("Anonymous User: redirecting to Login View");
             if (!beforeEnterEvent
                 .getNavigationTarget()
-                .equals(LoginViewOO.class))
-              beforeEnterEvent.rerouteTo(NAV_LOGIN_VIEW);
+                .equals(LoginViewOO.class)) beforeEnterEvent.rerouteTo(NAV_LOGIN_VIEW);
           });
 
     }

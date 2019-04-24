@@ -21,7 +21,8 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
 import org.rapidpm.dependencies.core.logger.HasLogger;
-import org.rapidpm.vaadin.sessionplanner.views.main.MainView;
+import org.rapidpm.vaadin.demo.views.Home;
+import org.rapidpm.vaadin.ui.MainLayout;
 
 @Route(value = VaadinApp.NAVIGATION_ROOT, layout = MainLayout.class)
 public class VaadinApp extends Composite<Div> implements HasLogger {
@@ -33,6 +34,6 @@ public class VaadinApp extends Composite<Div> implements HasLogger {
     logger().info("navigated to ROOT .. now redirecting..");
     UI
         .getCurrent()
-        .navigate(MainView.class);
+        .navigate( Home.class );
   }
 }

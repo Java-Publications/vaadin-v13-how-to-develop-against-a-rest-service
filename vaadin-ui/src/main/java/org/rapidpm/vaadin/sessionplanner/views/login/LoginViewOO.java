@@ -31,9 +31,9 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 import org.rapidpm.dependencies.core.logger.HasLogger;
+import org.rapidpm.vaadin.demo.views.Home;
 import org.rapidpm.vaadin.sessionplanner.services.security.SecurityServiceClient;
 import org.rapidpm.vaadin.sessionplanner.services.security.User;
-import org.rapidpm.vaadin.sessionplanner.views.main.MainView;
 
 import static com.vaadin.flow.theme.lumo.Lumo.DARK;
 import static com.vaadin.flow.theme.lumo.Lumo.LIGHT;
@@ -95,7 +95,7 @@ public class LoginViewOO extends Composite<HorizontalLayout> implements HasLogge
                 .setAttribute(User.class, u);
             UI
                 .getCurrent()
-                .navigate(MainView.class);
+                .navigate( Home.class );
           }, f -> {
             failedLogin();
             logger().info(f);
