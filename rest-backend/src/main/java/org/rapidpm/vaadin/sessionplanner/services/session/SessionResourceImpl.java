@@ -38,19 +38,29 @@ public class SessionResourceImpl implements SessionResource {
 
   @Override
   public List<SessionBase> find(SessionFilter filter, OffsetRequest offsetRequest) {
-    Stream<SessionBase> stream = sessions.stream().map(session -> {
+    Stream<? extends SessionBase> stream = sessions.stream().map(session -> {
       // In real world we would not load the abstract from prersistens layer
       SessionBase base = new SessionBase();
       base.setId(session.getId());
       base.setTitle(session.getTitle());
       return base;
     });
-    if (filter.getNameContains() != null && !filter.getNameContains().equals("")) {
-      stream = stream.filter(session -> session.getTitle().toLowerCase()
-          .contains(filter.getNameContains().toLowerCase()));
-    }
+    stream = addFilter(filter, stream);
     stream = stream.skip(offsetRequest.getOffset()).limit(offsetRequest.getLimit());
     return stream.collect(Collectors.toList());
   }
 
+  private Stream<? extends SessionBase> addFilter(SessionFilter filter,
+      Stream<? extends SessionBase> stream) {
+    if (filter.getNameContains() != null && !filter.getNameContains().equals("")) {
+      stream = stream.filter(session -> session.getTitle().toLowerCase()
+          .contains(filter.getNameContains().toLowerCase()));
+    }
+    return stream;
+  }
+
+  @Override
+  public int count(SessionFilter filter) {
+    return (int) addFilter(filter, sessions.stream()).count();
+  }
 }

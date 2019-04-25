@@ -20,4 +20,8 @@ public interface SessionResource {
   @GET
   public List<SessionBase> find(@BeanParam SessionFilter filter,
       @BeanParam OffsetRequest offsetRequest);
+  
+  @GET
+  @Path("count")
+  public int count(@BeanParam SessionFilter filter);
 }
