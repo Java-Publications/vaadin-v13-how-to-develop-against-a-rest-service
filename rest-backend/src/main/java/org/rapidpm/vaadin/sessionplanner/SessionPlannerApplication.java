@@ -8,7 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import org.rapidpm.vaadin.sessionplanner.services.security.SecurityServiceResource;
-import org.rapidpm.vaadin.sessionplanner.services.session.SessionResourceImpl;
+import org.rapidpm.vaadin.sessionplanner.services.session.SessionServiceResource;
 
 @ApplicationScoped
 @ApplicationPath(APPLICATION_ROOT)
@@ -20,7 +20,7 @@ public class SessionPlannerApplication extends Application {
   public Set<Class<?>> getClasses() {
     Set<Class<?>> set = new HashSet<>();
     set.add(SecurityServiceResource.class);
-    set.add(SessionResourceImpl.class);
+    set.add(SessionServiceResource.class);
     return unmodifiableSet(set);
   }
 

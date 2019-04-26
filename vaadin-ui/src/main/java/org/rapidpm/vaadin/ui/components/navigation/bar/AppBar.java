@@ -20,7 +20,6 @@ import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.shared.Registration;
 import org.rapidpm.vaadin.sessionplanner.services.security.User;
-import org.rapidpm.vaadin.sessionplanner.views.login.LoginViewOO;
 import org.rapidpm.vaadin.ui.MainLayout;
 import org.rapidpm.vaadin.ui.components.FlexBoxLayout;
 import org.rapidpm.vaadin.ui.components.navigation.tab.NaviTab;
@@ -132,9 +131,7 @@ public class AppBar extends Composite<FlexLayout> {
         contextMenu.addItem("Log Out",e -> {
             UI            ui      = UI.getCurrent();
             VaadinSession session = ui.getSession();
-            session.setAttribute( User.class, null );
             session.close();
-            ui.navigate( LoginViewOO.class );
         } );
     }
 

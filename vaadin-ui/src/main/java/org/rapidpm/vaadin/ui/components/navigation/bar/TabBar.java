@@ -16,8 +16,8 @@ import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.server.VaadinSession;
+import com.vaadin.flow.server.WrappedSession;
 import org.rapidpm.vaadin.sessionplanner.services.security.User;
-import org.rapidpm.vaadin.sessionplanner.views.login.LoginViewOO;
 import org.rapidpm.vaadin.ui.MainLayout;
 import org.rapidpm.vaadin.ui.components.navigation.tab.NaviTabs;
 import org.rapidpm.vaadin.ui.util.LumoStyles;
@@ -65,10 +65,8 @@ public class TabBar extends Composite<FlexLayout> {
         contextMenu.addItem("Settings", e -> System.out.println("Testing..."));
         contextMenu.addItem("Logout", e -> {
             UI            ui      = UI.getCurrent();
-            VaadinSession session = ui.getSession();
-            session.setAttribute( User.class, null );
-            session.close();
-            ui.navigate( LoginViewOO.class );
+            VaadinSession vaadinSession = ui.getSession();
+            vaadinSession.close();
         } );
 
         addTab = UIUtils.createSmallButton(VaadinIcon.PLUS);

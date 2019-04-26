@@ -12,7 +12,7 @@ import static org.rapidpm.frp.model.Result.success;
 import static org.rapidpm.vaadin.sessionplanner.services.security.SecurityServiceMessageKeys.*;
 
 @ApplicationScoped
-public class SecurityService implements SecurityServiceAPI {
+public class SecurityService {
 
 
   //#3 TODO Connection to a persistence Layer

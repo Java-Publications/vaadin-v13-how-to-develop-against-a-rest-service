@@ -1,15 +1,11 @@
-package org.rapidpm.vaadin.sessionplanner.services;
+package org.rapidpm.vaadin.sessionplanner.services.session.modell;
 
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.QueryParam;
 
 public class OffsetRequest {
-  @QueryParam("limit")
-  @DefaultValue("20")
-  private int limit;
-  @QueryParam("offset")
-  @DefaultValue("0")
-  private int offset;
+  @QueryParam("limit") @DefaultValue("20") private int limit;
+  @QueryParam("offset") @DefaultValue("0") private int offset;
 
   public OffsetRequest() {
     super();
@@ -17,7 +13,7 @@ public class OffsetRequest {
 
   public OffsetRequest(int limit, int offset) {
     super();
-    this.limit = limit;
+    this.limit  = limit;
     this.offset = offset;
   }
 

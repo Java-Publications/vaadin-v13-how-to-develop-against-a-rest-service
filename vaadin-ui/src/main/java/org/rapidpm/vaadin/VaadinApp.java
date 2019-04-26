@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.rapidpm.vaadin.sessionplanner;
+package org.rapidpm.vaadin;
 
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Composite;
@@ -29,9 +29,10 @@ public class VaadinApp extends Composite<Div> implements HasLogger {
 
   public static final String NAVIGATION_ROOT = "";
 
-  @Override protected void onAttach(AttachEvent attachEvent) {
-    super.onAttach(attachEvent);
-    logger().info("navigated to ROOT .. now redirecting..");
+  @Override
+  protected void onAttach(AttachEvent attachEvent) {
+    super.onAttach( attachEvent );
+    logger().info( "navigated to ROOT .. now redirecting.." );
     UI
         .getCurrent()
         .navigate( Home.class );
